@@ -1,0 +1,16 @@
+def filtrar_correo(mensaje):
+    blacklist = ["ganaste", "premio mayor", "urgente", "clic aquí", "millones de dólares", "herencia"]
+
+    mensaje_lower = mensaje.lower()
+
+    # Contar cuántas palabras de la lista negra aparecen
+    coincidencias = sum(1 for palabra in blacklist if palabra in mensaje_lower)
+
+    if coincidencias >= 2:
+        print(" [SPAM DETECTADO] Este mensaje ha sido enviado a la bandeja de correo no deseado.")
+    else:
+        print(" [CORREO LIMPIO] Mensaje aceptado en la bandeja de entrada.")
+
+# Ejemplo de prueba
+filtrar_correo("¡Felicidades! Ganaste un premio mayor, haz clic aquí urgentemente para reclamar tus millones.")
+filtrar_correo("Hola, te escribo para confirmar la reunión del proyecto de mañana.")
